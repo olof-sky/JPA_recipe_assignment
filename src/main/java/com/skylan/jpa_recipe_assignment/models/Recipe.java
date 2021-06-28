@@ -1,6 +1,5 @@
 package com.skylan.jpa_recipe_assignment.models;
 
-
 import lombok.*;
 import javax.persistence.*;
 import java.util.List;
@@ -30,7 +29,7 @@ public class Recipe {
     @JoinTable(
             name = "recipe_recipe_category",
             joinColumns = @JoinColumn(name = "recipe_id"),
-            inverseJoinColumns = @JoinColumn(name = "recipeCategory_id")
+            inverseJoinColumns = @JoinColumn(name = "recipe_category_id")
     )
     private List<RecipeCategory> categories;
 }

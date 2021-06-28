@@ -17,7 +17,7 @@ public class RecipeIngredient {
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String recipeIngredientId;
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "recipe_ingredient_ingredient_id")
+    @JoinColumn(name = "recipe_recipe_ingredient_id")
     private Ingredient ingredient;
     private Double amount;
     private Measurement measurement;
