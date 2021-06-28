@@ -30,7 +30,7 @@ public class Recipe {
     @JoinTable(
             name = "recipe_recipe_category",
             joinColumns = @JoinColumn(name = "recipe_id"),
-            inverseJoinColumns = @JoinColumn(name = "recipe_category_id")
+            inverseJoinColumns = @JoinColumn(name = "recipeCategory_id")
     )
     private List<RecipeCategory> categories;
 }
