@@ -16,14 +16,12 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int recipeId;
     private String recipeName;
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "recipe_recipe_ingredient_id")
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST})
     private List<RecipeIngredient> recipeIngredients;
-    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "recipe_recipe_instruction_id")
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST})
     private RecipeInstruction recipeInstruction;
     @ManyToMany(
-            cascade = {CascadeType.DETACH, CascadeType.REFRESH},
+            cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST},
             fetch = FetchType.LAZY
     )
     @JoinTable(

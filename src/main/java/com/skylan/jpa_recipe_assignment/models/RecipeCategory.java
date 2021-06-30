@@ -17,7 +17,7 @@ public class RecipeCategory {
     private int recipeCategoryId;
     private String recipeCategoryName;
     @ManyToMany(
-            cascade = {CascadeType.DETACH, CascadeType.REFRESH},
+            cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST},
             fetch = FetchType.LAZY,
             mappedBy = "categories"
     )

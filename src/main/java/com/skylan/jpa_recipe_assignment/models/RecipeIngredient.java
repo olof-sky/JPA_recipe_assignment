@@ -16,12 +16,11 @@ public class RecipeIngredient {
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String recipeIngredientId;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "recipe_recipe_ingredient_id")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST})
     private Ingredient ingredient;
     private Double amount;
     private Measurement measurement;
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.REFRESH},
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST},
             fetch = FetchType.LAZY)
     private Recipe recipe;
 }
