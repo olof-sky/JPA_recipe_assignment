@@ -8,22 +8,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.*;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 class RecipeDAOTest {
     @Autowired private RecipeDAO testObject;
-    @Autowired private IngredientDAO ingredientDAO;
     @Autowired private TestEntityManager em;
 
-    private List<Recipe> recipesInContext;
+    private List<Recipe> recipes;
     private List<Ingredient> ingredients;
     private List<RecipeIngredient> recipeIngredients;
     private List<RecipeInstruction> recipeInstructions;
     private List<RecipeCategory> recipeCategories;
+
     @BeforeEach
     void setUp(){
         TestObjectGenerator testObjectGenerator = new TestObjectGenerator();
@@ -44,7 +43,7 @@ class RecipeDAOTest {
             recipeInstructions.add(em.persist(recipeInstruction));
         }
         List<Recipe> recipes = testObjectGenerator.recipe();
-        recipesInContext = testObject.saveAll(recipes);
+        this.recipes = testObject.saveAll(recipes);
         em.flush();
     }
 
@@ -57,7 +56,39 @@ class RecipeDAOTest {
 
     @Test
     void findByCategoriesRecipeCategoriesSizeGreaterThenOneSuccesfull() {
-        recipesInContext.get(0).setCategories(recipeCategories);
-        System.out.println(testObject.findByCategoriesRecipeCategoriesSizeGreaterThenOne());
+        recipes.get(0).setCategories(recipeCategories);
+        assertEquals(1, testObject.findByCategoriesRecipeCategoriesSizeGreaterThenOne().size());
+    }
+
+    @Test
+    void findByRecipeNameIgnoreCase() {
+        assertNotNull(testObject.findByRecipeNameIgnoreCase("RECIPE1"));
+        List<Recipe> actual = new ArrayList<>(Collections.singletonList(recipes.get(0)));
+        List<Recipe> expected = testObject.findByRecipeNameIgnoreCase("REcIpE1");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void findByRecipeIngredientsIngredientIngredientNameIgnoreCase() {
+        recipeIngredients.get(0).setIngredient(ingredients.get(0));
+        recipes.get(0).setRecipeIngredients(new ArrayList<>(Collections.singletonList(recipeIngredients.get(0))));
+        List<Recipe> recipe = new ArrayList<>(Collections.singletonList(recipes.get(0)));
+        assertEquals(recipe, testObject.findRecipeByRecipeIngredientsIngredientIngredientNameIgnoreCase("lök"));
+    }
+
+    @Test
+    void findByCategoriesRecipeCategoryName() {
+        recipes.get(0).setCategories(recipeCategories);
+        assertNotNull(testObject.findByCategoriesRecipeCategoryName("Burkmat"));
+        List<Recipe> recipesList = new ArrayList<>(Collections.singletonList(recipes.get(0)));
+        assertEquals(recipesList, testObject.findByCategoriesRecipeCategoryName("Burkmat"));
+    }
+
+    @Test
+    void findByMultipleCategories() {
+        recipes.get(0).setCategories(recipeCategories);
+        List<Recipe> recipesList = new ArrayList<>(Collections.singletonList(recipes.get(0)));
+        assertEquals(1, testObject.findByMultipleCategories("Burkmat", "Billig mat").size());
+        assertEquals(recipesList, testObject.findByMultipleCategories("Burkmat", "Billig mat"));
     }
 }
