@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface IngredientDAO extends JpaRepository<Ingredient, Integer> {
     List<Ingredient> findIngredientByIngredientName(String ingredientName);
-    List<Ingredient> findIngredientsByIngredientNameContaining(String ingredientName);
+    List<Ingredient> findIngredientByIngredientNameContaining(String ingredientName);
 }
