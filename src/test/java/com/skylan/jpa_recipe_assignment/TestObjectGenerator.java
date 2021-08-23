@@ -1,6 +1,7 @@
 package com.skylan.jpa_recipe_assignment;
 
-import com.skylan.jpa_recipe_assignment.models.*;
+import com.skylan.jpa_recipe_assignment.model.entity.*;
+
 import java.util.Arrays;
 import java.util.List;
 

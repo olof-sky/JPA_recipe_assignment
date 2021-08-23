@@ -1,10 +1,11 @@
-package com.skylan.jpa_recipe_assignment.models;
+package com.skylan.jpa_recipe_assignment.model.entity;
 
 import lombok.*;
 import javax.persistence.*;
 
 @Getter
 @Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(exclude = {"ingredientId"})

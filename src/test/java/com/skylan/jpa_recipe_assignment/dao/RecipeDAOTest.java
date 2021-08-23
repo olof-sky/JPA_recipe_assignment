@@ -1,7 +1,7 @@
 package com.skylan.jpa_recipe_assignment.dao;
 
 import com.skylan.jpa_recipe_assignment.TestObjectGenerator;
-import com.skylan.jpa_recipe_assignment.models.*;
+import com.skylan.jpa_recipe_assignment.model.entity.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
