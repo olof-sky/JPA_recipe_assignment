@@ -8,6 +8,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class IngredientDTO {
-    private String IngredientId;
+    private Integer IngredientId;
     private String IngredientName;
 }
