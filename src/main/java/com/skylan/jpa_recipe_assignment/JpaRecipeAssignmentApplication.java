@@ -9,4 +9,6 @@ public class JpaRecipeAssignmentApplication {
     public static void main(String[] args) {
         SpringApplication.run(JpaRecipeAssignmentApplication.class, args);
     }
+
+    // TODO Add Validation on all DTO's
 }
