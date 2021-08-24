@@ -7,10 +7,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
 @NoArgsConstructor
-public class RecipeIngredientDTO {
+public class RecipeIngredientDTO implements Serializable {
     private String recipeIngredientId;
     private Ingredient ingredient;
     private Double amount;
