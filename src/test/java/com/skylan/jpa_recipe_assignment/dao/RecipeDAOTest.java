@@ -47,6 +47,13 @@ class RecipeDAOTest {
     }
 
     @Test
+    void findRecipeByRecipeName() {
+        String actual = testObject.findRecipeByRecipeName("recipe1");
+        String expected = "recipe1";
+        assertEquals(expected, actual);
+    }
+
+    @Test
     void findByCategoriesRecipeCategoriesSizeGreaterThenOne() {
         List<Recipe> actual = testObject.findByCategoriesRecipeCategoriesSizeGreaterThenOne();
         List<Recipe> expected = new ArrayList<>();

@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import java.util.List;
 public interface RecipeDAO extends JpaRepository<Recipe, Integer> {
+    @Query("SELECT r.recipeName FROM Recipe r WHERE (r.recipeName) = :name")
+    String findRecipeByRecipeName(@Param("name") String name);
     List<Recipe> findByRecipeNameIgnoreCase(String recipeName);
     List<Recipe> findRecipeByRecipeIngredientsIngredientIngredientNameIgnoreCase(String ingredientName);
     List<Recipe> findByCategoriesRecipeCategoryName(String categoryName);
