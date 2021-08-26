@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class IngredientFactory {
     public Ingredient CreateFromDTO(IngredientDTO ingredientDTO){
         Ingredient ingredient = new Ingredient();
-        ingredient.setIngredientId(ingredientDTO.getIngredientId());
+        //ingredient.setIngredientId(ingredientDTO.getIngredientId());
         ingredient.setIngredientName(ingredientDTO.getIngredientName() == null ? null : ingredientDTO.getIngredientName().trim());
         return ingredient;
     }

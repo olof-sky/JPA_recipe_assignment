@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class IngredientService {
@@ -48,7 +50,7 @@ public class IngredientService {
     @Transactional(rollbackFor = RuntimeException.class)
     public IngredientDTO create (IngredientDTO ingredientDTO){
         Ingredient ingredient = ingredientFactory.CreateFromDTO(ingredientDTO);
-        if (ingredientDAO.findIngredientByIngredientName(ingredient.getIngredientName()) == null){
+        if (ingredientDAO.findIngredientByIngredientName(ingredientDTO.getIngredientName()).isEmpty()){
             ingredientDAO.save(ingredient);
         }else throw new ResourceAlreadyExistException("Ingredient " + ingredient.getIngredientName() + " already exist");
         return toDTO(ingredient);
