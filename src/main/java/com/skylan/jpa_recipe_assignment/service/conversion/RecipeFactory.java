@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public class RecipeFactory {
     public Recipe CreateFromDTO(RecipeDTO recipeDTO){
         Recipe recipe = new Recipe();
-        recipe.setRecipeId(recipeDTO.getRecipeId());
         recipe.setRecipeName(recipeDTO.getRecipeName() == null ? null : recipeDTO.getRecipeName().trim());
         recipe.setRecipeIngredients(recipeDTO.getRecipeIngredients() == null ? new ArrayList<>() : recipeDTO.getRecipeIngredients());
         recipe.setRecipeInstruction(recipeDTO.getRecipeInstruction() == null ? null : recipeDTO.getRecipeInstruction());

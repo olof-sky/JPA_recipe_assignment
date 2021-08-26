@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 public class RecipeCategoryFactory {
     public RecipeCategory CreateFromDTO(RecipeCategoryDTO recipeCategoryDTO){
         RecipeCategory recipeCategory = new RecipeCategory();
-        recipeCategory.setRecipeCategoryId(recipeCategoryDTO.getRecipeCategoryId());
         recipeCategory.setRecipeCategoryName(recipeCategoryDTO.getRecipeCategoryName() == null ? null : recipeCategoryDTO.getRecipeCategoryName().trim());
         return recipeCategory;
     }

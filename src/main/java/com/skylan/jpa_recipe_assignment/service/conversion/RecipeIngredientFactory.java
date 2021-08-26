@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 public class RecipeIngredientFactory {
     public RecipeIngredient CreateFromDTO(RecipeIngredientDTO recipeIngredientDTO){
         RecipeIngredient recipeIngredient = new RecipeIngredient();
-        recipeIngredient.setRecipeIngredientId(recipeIngredientDTO.getRecipeIngredientId());
         recipeIngredient.setIngredient(recipeIngredientDTO.getIngredient() == null ? null : recipeIngredientDTO.getIngredient());
         recipeIngredient.setAmount(recipeIngredientDTO.getAmount() == null ? null : recipeIngredientDTO.getAmount());
         recipeIngredient.setMeasurement(recipeIngredientDTO.getMeasurement() == null ? null : recipeIngredientDTO.getMeasurement());

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 public class RecipeInstructionFactory {
     public RecipeInstruction CreateFromDTO(RecipeInstructionDTO recipeInstructionDTO) {
         RecipeInstruction recipeInstruction = new RecipeInstruction();
-        recipeInstruction.setRecipeInstructionId(recipeInstructionDTO.getRecipeInstructionId());
         recipeInstruction.setRecipeInstruction(recipeInstructionDTO.getRecipeInstruction() == null ? null : recipeInstruction.getRecipeInstruction());
         return recipeInstruction;
     }
