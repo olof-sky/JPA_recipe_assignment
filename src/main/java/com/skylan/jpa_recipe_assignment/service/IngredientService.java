@@ -48,7 +48,7 @@ public class IngredientService {
     @Transactional(rollbackFor = RuntimeException.class)
     public IngredientDTO create (IngredientDTO ingredientDTO){
         Ingredient ingredient = ingredientFactory.CreateFromDTO(ingredientDTO);
-        if (ingredientDAO.findIngredientByIngredientName(ingredient.getIngredientName()) != null){
+        if (ingredientDAO.findIngredientByIngredientName(ingredient.getIngredientName()) == null){
             ingredientDAO.save(ingredient);
         }else throw new ResourceAlreadyExistException("Ingredient " + ingredient.getIngredientName() + " already exist");
         return toDTO(ingredient);
